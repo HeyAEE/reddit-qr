@@ -11,17 +11,18 @@
         "https://api.qrserver.com/",
         "tabs"
         ],
-        
-    "browser_action": {
-        "default_icon": "icon.png",
-        "default_popup": "popup.html"
-    }
+
+    "page_action": {
+        "default_title": "Reddit-QR",
+        "default_icon": "icon.png"
+    },
     
     "content_scripts": [
     {
-        "matches": ["*://*.reddit.com/*"],
-        "include_globs": ["*/r/*/comments/*"
-        "js": ["insert_qr.js"]
+        "matches": ["http://*.reddit.com/*", "https://*.reddit.com/*"],
+        "include_globs": ["*/r/*/comments/*"],
+        "js": ["insert_qr.js"],
+        "run_at": "document_end"
     }
-    ],
+    ]
 }
